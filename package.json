@@ -1,0 +1,23 @@
+{
+  "name": "package-bully",
+  "version": "1.0.0",
+  "description": "Bully you package.json to make sure it works as expected",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/razroo/package-bully.git"
+  },
+  "keywords": [
+    "package-json",
+    "integration-testing"
+  ],
+  "author": "Charlie Greenman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/razroo/package-bully/issues"
+  },
+  "homepage": "https://github.com/razroo/package-bully#readme"
+}
