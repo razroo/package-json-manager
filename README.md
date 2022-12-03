@@ -1,7 +1,8 @@
-# NPM Version Finder
+# Package JSON Manager 
+
 ![Version Finder Logo](robot-bully-logo.png "BUL - The Version Finder Robot")
 
-Integration testing for package json. Confirm that all packages can be correctly installed in a package json. 
+Package JSON Manager. Confirm that all packages can be correctly installed in a package json. 
 This library will enable foundation for something like 
 
 ```
