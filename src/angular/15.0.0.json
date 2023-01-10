@@ -1,0 +1,32 @@
+{
+  "name": "angular version 15.0.0",  
+  "version":"15.0.0", 
+  "scripts": {
+    "start": "ng serve <%= projectName %>"
+  },
+  "dependencies": {
+    "@angular/animations": "15.0.4",
+    "@angular/cdk": "15.0.3",
+    "@angular/common": "15.0.4",
+    "@angular/compiler": "15.0.4",
+    "@angular/core": "15.0.4",
+    "@angular/forms": "15.0.4",
+    "@angular/material": "15.0.3",
+    "@angular/platform-browser": "15.0.4",
+    "@angular/platform-browser-dynamic": "15.0.4",
+    "@angular/platform-server": "~15.0.0",
+    "@angular/router": "15.0.4"
+  },
+  "devDependencies": {
+    "@angular-builders/jest": "^15.0.0",
+    "@angular-devkit/build-angular": "15.0.4",
+    "@angular-eslint/eslint-plugin": "15.0.0",
+    "@angular-eslint/eslint-plugin-template": "15.0.0",
+    "@angular-eslint/template-parser": "15.0.0",
+    "@angular/cli": "~15.0.0",
+    "@angular/compiler-cli": "15.0.4",
+    "@angular/language-service": "15.0.4",
+    "@ngrx/schematics": "15.0.0",
+    "@ngrx/store-devtools": "15.0.0"
+  }
+}
