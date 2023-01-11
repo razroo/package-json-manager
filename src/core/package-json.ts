@@ -47,7 +47,7 @@ export function findPackageJson(workspaceDir: string, packageName: string): stri
 }
 
 export async function determineLanguagesUsed(packageJsonMap: Map<string, PackageTreeNode>): Promise<string[]> {
-  const languagesUsedArr = [];
+  const languagesUsedArr = [] as any;
   // TODO
   // modify to use the map for core programming languages
   if(packageJsonMap.has('@angular/core')) {
