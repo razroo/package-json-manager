@@ -61,6 +61,24 @@ export async function determineLanguagesUsed(packageJsonMap: Map<string, Package
   return languagesUsedArr;
 }
 
+export async function determineLanguageWithVersionUsed(packageJsonMap: Map<string, PackageTreeNode>): Promise<string[]> {
+  const languagesUsedWithVersionArr = [] as any;
+  const coreProgrammingLanguages = coreProgrammingLanguagesMap();
+  // TODO
+  for (const coreProgrammingLanguageKey in coreProgrammingLanguages) {
+    if(packageJsonMap.has(coreProgrammingLanguageKey)) {
+      // we want to make the name non package json more human readable flavored
+      // e.g. @angular/core is now angular
+      const coreProgrammingLanguageValue = coreProgrammingLanguages[coreProgrammingLanguageKey];
+      const packageJsonItem = packageJsonMap.get(coreProgrammingLanguageKey) as any;
+      const coreProgrammingLanguageWithVersionValue = `${coreProgrammingLanguageValue}-${packageJsonItem.version}` ;
+      languagesUsedWithVersionArr.push(coreProgrammingLanguageWithVersionValue);
+    }
+  }
+
+  return languagesUsedWithVersionArr;
+}
+
 export async function getProjectDependencies(dir: string): Promise<Map<string, PackageTreeNode>> {
   const pkg = await readPackageJson(join(dir, 'package.json'));
   if (!pkg) {
