@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { dirname, join } from 'path';
 import * as resolve from 'resolve';
+import { coreProgrammingLanguagesMap } from '../core-programming-languages/core-programming-languages';
 
 export interface PackageJson {
   name: string;
@@ -48,13 +49,13 @@ export function findPackageJson(workspaceDir: string, packageName: string): stri
 
 export async function determineLanguagesUsed(packageJsonMap: Map<string, PackageTreeNode>): Promise<string[]> {
   const languagesUsedArr = [] as any;
+  const coreProgrammingLanguages = coreProgrammingLanguagesMap();
   // TODO
-  // modify to use the map for core programming languages
-  if(packageJsonMap.has('@angular/core')) {
-    languagesUsedArr.push('angular');
-  }
-  if(packageJsonMap.has('react')) {
-    languagesUsedArr.push('react');
+  for (const coreProgrammingLanguageKey in coreProgrammingLanguages) {
+    if(packageJsonMap.has(coreProgrammingLanguageKey)) {
+      const coreProgrammingLanguageValue = coreProgrammingLanguages[coreProgrammingLanguageKey];
+      languagesUsedArr.push(coreProgrammingLanguageValue);
+    }
   }
 
   return languagesUsedArr;
