@@ -1,5 +1,5 @@
 {
-  "name": "package-json-manager",
+  "name": "@razroo/package-json-manager",
   "version": "1.0.1",
   "description": "Autonomously determine correct version of all the things.",
   "main": "index.ts",
