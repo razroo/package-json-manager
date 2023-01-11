@@ -56,6 +56,7 @@ export async function determineLanguagesUsed(packageJsonMap: Map<string, Package
   if(packageJsonMap.has('react')) {
     languagesUsedArr.push('react');
   }
+
   return languagesUsedArr;
 }
 
