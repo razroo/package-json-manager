@@ -1,6 +1,8 @@
 export function coreProgrammingLanguagesMap() {
   return {
     '@angular/core': 'angular',
-    'react': 'react'
+    'react': 'react',
+    'vue': 'vue',
+    'svelte': 'svelte'
   }
 }
