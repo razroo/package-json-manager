@@ -5,6 +5,7 @@ export function coreProgrammingLanguagesMap() {
     'vue': 'vue',
     'svelte': 'svelte',
     'aws-sdk': 'aws',
-    'typescript': 'typescript'
+    'typescript': 'typescript',
+    'next': 'next'
   }
 }
