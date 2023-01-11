@@ -6,6 +6,7 @@ export function coreProgrammingLanguagesMap() {
     'svelte': 'svelte',
     'aws-sdk': 'aws',
     'typescript': 'typescript',
-    'next': 'next'
+    'next': 'next',
+    'gatsby': 'gatsby'
   }
 }
