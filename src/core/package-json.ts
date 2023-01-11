@@ -71,7 +71,10 @@ export async function determineLanguageWithVersionUsed(packageJsonMap: Map<strin
       // e.g. @angular/core is now angular
       const coreProgrammingLanguageValue = coreProgrammingLanguages[coreProgrammingLanguageKey];
       const packageJsonItem = packageJsonMap.get(coreProgrammingLanguageKey) as any;
-      const coreProgrammingLanguageWithVersionValue = `${coreProgrammingLanguageValue}-${packageJsonItem.version}` ;
+      // we always want to round patch to 0
+      const [major, minor] = packageJsonItem.version.split('.').map(Number);
+      const versionWithPathAtZero = `${major}.${minor}.0`;
+      const coreProgrammingLanguageWithVersionValue = `${coreProgrammingLanguageValue}-${versionWithPathAtZero}` ;
       languagesUsedWithVersionArr.push(coreProgrammingLanguageWithVersionValue);
     }
   }

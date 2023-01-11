@@ -16,11 +16,11 @@ describe('determineLanguageWithVersionUsed', () => {
     it('should loop through core programming languages and return array of languages used with version', async() => {
       const packageJsonMap = new Map([
         ['@angular/core', {name: '@angular/core', version: '7.0.1'}],
-        ['react', {name: 'react', version: '16.7.0'}],
-        ['vue', {name: 'vue', version: '15.0.0'}],
+        ['react', {name: 'react', version: '16.7.9'}],
+        ['vue', {name: 'vue', version: '15.0.5'}],
         ['garbage', {name: 'garbage', version: '1.2.3'}]
       ]) as any;
   
-      expect(await determineLanguageWithVersionUsed(packageJsonMap)).toEqual(['angular-7.0.1', 'react-16.7.0', 'vue-15.0.0']);
+      expect(await determineLanguageWithVersionUsed(packageJsonMap)).toEqual(['angular-7.0.0', 'react-16.7.0', 'vue-15.0.0']);
     });
   });
