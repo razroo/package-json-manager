@@ -7,6 +7,7 @@ export function coreProgrammingLanguagesMap() {
     'aws-sdk': 'aws',
     'typescript': 'typescript',
     'next': 'next',
-    'gatsby': 'gatsby'
+    'gatsby': 'gatsby',
+    'express': 'express'
   }
 }
