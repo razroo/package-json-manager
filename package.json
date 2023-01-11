@@ -1,14 +1,14 @@
 {
-  "name": "package-bully",
+  "name": "package-json-manager",
   "version": "1.0.0",
-  "description": "Bully you package.json to make sure it works as expected",
+  "description": "Autonomously determine correct version of all the things.",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/razroo/package-bully.git"
+    "url": "git+https://github.com/razroo/package-json-manager.git"
   },
   "keywords": [
     "package-json",
@@ -17,7 +17,12 @@
   "author": "Charlie Greenman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/razroo/package-bully/issues"
+    "url": "https://github.com/razroo/package-json-manager/issues"
   },
-  "homepage": "https://github.com/razroo/package-bully#readme"
+  "homepage": "https://github.com/razroo/package-json-manager#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.4"
+  }
 }
