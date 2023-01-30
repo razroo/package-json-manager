@@ -1,6 +1,6 @@
 {
   "name": "package-json-manager",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Autonomously determine correct version of all the things.",
   "main": "index.ts",
   "scripts": {
