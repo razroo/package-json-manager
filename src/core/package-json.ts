@@ -61,7 +61,7 @@ export async function determineLanguagesUsed(packageJsonMap: Map<string, Package
   return languagesUsedArr;
 }
 
-export async function determineLanguageWithVersionUsed(packageJsonMap: Map<string, PackageTreeNode>): Promise<string[]> {
+export async function determineLanguagesWithVersionUsed(packageJsonMap: Map<string, PackageTreeNode>): Promise<string[]> {
   const languagesUsedWithVersionArr = [] as any;
   const coreProgrammingLanguages = coreProgrammingLanguagesMap();
   // TODO

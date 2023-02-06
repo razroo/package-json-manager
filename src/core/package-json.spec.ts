@@ -1,4 +1,4 @@
-import { determineLanguagesUsed, determineLanguageWithVersionUsed } from "./package-json";
+import { determineLanguagesUsed, determineLanguagesWithVersionUsed } from "./package-json";
 
 describe('determineLanguagesUsed', () => {
   it('should loop through core programming languages and return array of languages used', async() => {
@@ -21,6 +21,6 @@ describe('determineLanguageWithVersionUsed', () => {
         ['garbage', {name: 'garbage', version: '1.2.3'}]
       ]) as any;
   
-      expect(await determineLanguageWithVersionUsed(packageJsonMap)).toEqual(['angular-7.0.0', 'react-16.7.0', 'vue-15.0.0']);
+      expect(await determineLanguagesWithVersionUsed(packageJsonMap)).toEqual(['angular-7.0.0', 'react-16.7.0', 'vue-15.0.0']);
     });
   });
