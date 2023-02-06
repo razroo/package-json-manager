@@ -1,8 +1,8 @@
 # Package JSON Manager 
 
-Rule #1: There are no rules 
-Rule #2: Everything must be unit tested
-Rule #3: If you can be anything in life be kind
+* Rule #1: There are no rules 
+* Rule #2: Everything must be unit tested
+* Rule #3: If you can be anything in life be kind
 
 ![Version Finder Logo](robot-bully-logo.png "BUL - The Version Finder Robot")
 
@@ -17,7 +17,7 @@ and npm automatically installing the right version.
 
 ## Documentation
 
-### getProjectDependencies
+### Package Json Version Utils
 ```ts
 // absolute path to directory
 const projectDependencies = getProjectDependencies(__dirname);
