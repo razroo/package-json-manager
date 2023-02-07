@@ -35,6 +35,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "resolve": "^1.22.1",
     "tslib": "^2.4.1"
   },
   "files": [
