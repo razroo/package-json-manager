@@ -19,8 +19,10 @@ and npm automatically installing the right version.
 
 ### Package Json Version Utils
 ```ts
+// method to dynamically find package json
+const packageJsonPath = findPackageJson(__dirname, )
 // absolute path to directory
-const projectDependencies = getProjectDependencies(__dirname);
+const projectDependencies = getProjectDependencies(packageJsonPath);
 // languagesUsed will return e.g. ['angular', 'react', 'vue'];
 const languagesUsed = determineLanguagesUsed(projectDependencies);
 // languagesUsedWithVersionUsed will return e.g. ['angular-7.0.0', 'react-16.7.0', 'vue-15.0.0']
