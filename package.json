@@ -2,7 +2,7 @@
   "name": "package-json-manager",
   "version": "1.0.5",
   "description": "Autonomously determine correct version of all the things.",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
