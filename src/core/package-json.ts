@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { dirname, join } from 'path';
+import { dirname, join, relative } from 'path';
 import * as resolve from 'resolve';
 import { coreProgrammingLanguagesMap } from '../core-programming-languages/core-programming-languages';
 
@@ -45,6 +45,35 @@ export function findPackageJson(workspaceDir: string, packageName: string): stri
   } catch {
     return undefined;
   }
+}
+
+export function searchForPackageJson(dir:string = process.cwd()): string | null {
+  const files = fs.readdirSync(dir);
+
+  for (const file of files) {
+    const filePath = join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (file === 'package.json') {
+      const pathBeforeSlice = relative(process.cwd(), filePath);
+      const FinalPath = pathBeforeSlice.slice(0,pathBeforeSlice.indexOf('package.json'));
+        return FinalPath;
+    }
+  }
+
+  for (const file of files) {
+    const filePath = join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory() && (file != 'node_modules')) {
+      const found = searchForPackageJson(filePath);
+      if (found) {
+        return found;
+      }
+    }
+  }
+
+  return null;
 }
 
 export async function determineLanguagesUsed(packageJsonMap: Map<string, PackageTreeNode>): Promise<string[]> {
