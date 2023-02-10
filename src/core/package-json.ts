@@ -50,25 +50,27 @@ export function findPackageJson(workspaceDir: string, packageName: string): stri
 export function searchForPackageJson(dir:string = process.cwd()): string | null {
   const files = fs.readdirSync(dir);
 
-  for (const file of files) {
-    const filePath = join(dir, file);
-    const stat = fs.statSync(filePath);
-
-    if (file === 'package.json') {
-      const pathBeforeSlice = relative(process.cwd(), filePath);
-      const FinalPath = pathBeforeSlice.slice(0,pathBeforeSlice.indexOf('package.json'));
-        return FinalPath;
+  if(files != null && files.length > 0) {
+    for (const file of files) {
+      const filePath = join(dir, file);
+      const stat = fs.statSync(filePath);
+  
+      if (file === 'package.json') {
+        const pathBeforeSlice = relative(process.cwd(), filePath);
+        const FinalPath = pathBeforeSlice.slice(0,pathBeforeSlice.indexOf('package.json'));
+          return FinalPath;
+      }
     }
-  }
-
-  for (const file of files) {
-    const filePath = join(dir, file);
-    const stat = fs.statSync(filePath);
-
-    if (stat.isDirectory() && (file != 'node_modules')) {
-      const found = searchForPackageJson(filePath);
-      if (found) {
-        return found;
+  
+    for (const file of files) {
+      const filePath = join(dir, file);
+      const stat = fs.statSync(filePath);
+  
+      if (stat.isDirectory() && (file != 'node_modules')) {
+        const found = searchForPackageJson(filePath);
+        if (found) {
+          return found;
+        }
       }
     }
   }
