@@ -28,8 +28,14 @@ describe('determineLanguageWithVersionUsed', () => {
     });
   });
 
-jest.mock('fs');
-jest.mock('path');
+  jest.mock('fs', () => ({
+    readdirSync: jest.fn()
+  }));
+  
+  jest.mock('path', () => ({
+    join: jest.fn(),
+    relative: jest.fn()
+  }));
 
 describe('searchForPackageJson', () => {
   it('should return the path to the package.json file', () => {
