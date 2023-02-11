@@ -57,9 +57,10 @@ export function searchForPackageJson(dir:string = process.cwd()): string | null 
       const stat = fs.statSync(filePath);
   
       if (file === 'package.json') {
-        const pathBeforeSlice = relative(process.cwd(), filePath);
-        const FinalPath = pathBeforeSlice.slice(0,pathBeforeSlice.indexOf('\\package.json'));
-          return FinalPath;
+        // const pathBeforeSlice = relative(process.cwd(), filePath);
+        // const FinalPath = pathBeforeSlice.slice(0,pathBeforeSlice.indexOf('\\package.json'));
+        // return FinalPath;
+        return dirname(filePath);
       }
     }
   
