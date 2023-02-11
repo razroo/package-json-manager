@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 
 import { determineLanguagesUsed, determineLanguagesWithVersionUsed, searchForPackageJson } from "./package-json";
 
@@ -28,34 +29,23 @@ describe('determineLanguageWithVersionUsed', () => {
     });
   });
 
-jest.mock('fs');
-jest.mock('path');
-
 describe('searchForPackageJson', () => {
-  it('should return the path to the package.json file', () => {
-    (fs.readdirSync as jest.Mock).mockReturnValueOnce(['package.json', 'src', 'public']);
-    (fs.statSync as jest.Mock).mockImplementation((filePath: string) => {
-      if (filePath === 'package.json') {
-        return {
-          isDirectory: jest.fn().mockReturnValue(false),
-        };
-      }
-      return {
-        isDirectory: jest.fn().mockReturnValue(true),
-      };
-    });
-    (path.join as jest.Mock).mockImplementation((dir: string, file: string) => `${dir}/${file}`);
-    (path.relative as jest.Mock).mockReturnValue('/path/to/package.json');
+  let tmpDir;
+  beforeEach(() => {
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'my-tmp-dir-'));
+  });
+  afterEach(() => {
+    fs.rmdirSync(tmpDir, { recursive: true });
+  });
 
-    expect(searchForPackageJson()).toEqual('/path/to/');
+  it('should return the path to the package.json file if it exists', () => {
+    fs.writeFileSync(path.join(tmpDir, 'package.json'), '{}');
+    const result = searchForPackageJson(tmpDir);
+    expect(result).toEqual(tmpDir);
   });
 
   it('should return null if the package.json file is not found', () => {
-    (fs.readdirSync as jest.Mock).mockReturnValueOnce(['src', 'public']);
-    (fs.statSync as jest.Mock).mockReturnValue({
-      isDirectory: jest.fn().mockReturnValue(true),
-    });
-
-    expect(searchForPackageJson()).toBeNull();
+    const result = searchForPackageJson(tmpDir);
+    expect(result).toBeNull();
   });
-});
+}); 

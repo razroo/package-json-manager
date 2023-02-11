@@ -57,7 +57,7 @@ export function searchForPackageJson(dir:string = process.cwd()): string | null 
   
       if (file === 'package.json') {
         const pathBeforeSlice = relative(process.cwd(), filePath);
-        const FinalPath = pathBeforeSlice.slice(0,pathBeforeSlice.indexOf('package.json'));
+        const FinalPath = pathBeforeSlice.slice(0,pathBeforeSlice.indexOf('\\package.json'));
           return FinalPath;
       }
     }
