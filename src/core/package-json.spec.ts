@@ -12,7 +12,7 @@ describe('determineLanguagesUsed', () => {
   });
 });
 
-describe('determineLanguageWithVersionUsed', () => {
+describe('determineLanguagesWithVersionUsed', () => {
     it('should loop through core programming languages and return array of languages used with version', async() => {
       const packageJsonMap = new Map([
         ['@angular/core', {name: '@angular/core', version: '7.0.1'}],
