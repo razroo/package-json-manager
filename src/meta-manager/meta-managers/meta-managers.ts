@@ -18,8 +18,8 @@ const metaManagers: MetaManager[] = [
   { programmingLanguage: 'Go', metaFiles: ['go.mod', 'go.sum'] },
   { programmingLanguage: 'Haskell', metaFiles: ['stack.yaml', 'cabal.config'] },
   { programmingLanguage: 'Java', metaFiles: ['pom.xml', 'build.gradle'] },
-  { programmingLanguage: 'JavaScript (Back-end)', metaFiles: ['package.json'] },
-  { programmingLanguage: 'JavaScript (Front-end)', metaFiles: ['package.json'] },
+  { programmingLanguage: 'JavaScript', metaFiles: ['package.json'] },
+  { programmingLanguage: 'JavaScript', metaFiles: ['package.json'] },
   { programmingLanguage: 'Kotlin', metaFiles: ['build.gradle.kts', 'build.gradle'] },
   { programmingLanguage: 'Lua', metaFiles: ['rockspec'] },
   {
