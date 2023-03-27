@@ -12,7 +12,7 @@ export interface PackageJson {
   optionalDependencies?: Record<string, string>;
 }
 
-function getAllDependencies(pkg: PackageJson): Set<[string, string]> {
+export function getAllDependencies(pkg: PackageJson): Set<[string, string]> {
   return new Set([
     ...Object.entries(pkg.dependencies || []),
     ...Object.entries(pkg.devDependencies || []),
