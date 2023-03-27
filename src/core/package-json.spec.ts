@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
-import { determineLanguagesUsed, determineLanguagesWithVersionUsed, searchForPackageJson } from "./package-json";
+import { determineLanguagesUsed, determineLanguagesWithVersionUsed, getAllDependencies, searchForPackageJson, PackageJson } from "./package-json";
 
 describe('determineLanguagesUsed', () => {
   it('should loop through core programming languages and return array of languages used', async() => {
@@ -13,6 +13,34 @@ describe('determineLanguagesUsed', () => {
     ]) as any;
 
     expect(await determineLanguagesUsed(packageJsonMap)).toEqual(['angular', 'react', 'vue']);
+  });
+});
+
+describe('getAllDependencies', () => {
+  test('returns the union of all dependencies in the provided package.json', () => {
+    // Arrange
+    const pkg: PackageJson = {
+      name: 'test',
+      version: '123',
+      dependencies: {
+        react: '^16.0.0',
+        'react-dom': '^16.0.0',
+      },
+      devDependencies: {
+        '@types/react': '^16.0.0',
+        '@types/react-dom': '^16.0.0',
+        jest: '^26.6.0',
+      },
+      peerDependencies: {
+        lodash: '^4.0.0',
+      },
+      optionalDependencies: {
+        'my-optional-dependency': '^1.0.0',
+      },
+    };
+    const result = getAllDependencies(pkg);
+    const expected = new Set([["react", "^16.0.0"], ["react-dom", "^16.0.0"], ["@types/react", "^16.0.0"], ["@types/react-dom", "^16.0.0"], ["jest", "^26.6.0"], ["lodash", "^4.0.0"], ["my-optional-dependency", "^1.0.0"]])
+    expect(result).toEqual(expected);
   });
 });
 
