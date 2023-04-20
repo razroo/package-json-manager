@@ -1,6 +1,5 @@
 import * as fs from 'fs';
-import { dirname, join, relative, resolve as resolvePath } from 'path';
-import * as resolve from 'resolve';
+import { dirname, resolve as resolvePath } from 'path';
 import { coreProgrammingLanguagesMap } from '../core-programming-languages/core-programming-languages';
 
 export interface PackageJson {
@@ -31,17 +30,6 @@ export interface PackageTreeNode {
 export async function readPackageJson(packageJsonPath: string): Promise<PackageJson | undefined> {
   try {
     return JSON.parse((await fs.promises.readFile(packageJsonPath)).toString());
-  } catch {
-    return undefined;
-  }
-}
-
-export function findPackageJson(workspaceDir: string, packageName: string): string | undefined {
-  try {
-    // avoid require.resolve here, see: https://github.com/angular/angular-cli/pull/18610#issuecomment-681980185
-    const packageJsonPath = resolve.sync(`${packageName}/package.json`, { basedir: workspaceDir });
-
-    return packageJsonPath;
   } catch {
     return undefined;
   }
@@ -114,28 +102,4 @@ export async function determineLanguagesWithVersionUsed(packageJsonMap: Map<stri
   }
 
   return languagesUsedWithVersionArr;
-}
-
-export async function getProjectDependencies(dir: string): Promise<Map<string, PackageTreeNode>> {
-  const pkg = await readPackageJson(join(dir, 'package.json'));
-  if (!pkg) {
-    throw new Error('Could not find package.json');
-  }
-
-  const results = new Map<string, PackageTreeNode>();
-  for (const [name, version] of getAllDependencies(pkg)) {
-    const packageJsonPath = findPackageJson(dir, name);
-    if (!packageJsonPath) {
-      continue;
-    }
-
-    results.set(name, {
-      name,
-      version,
-      path: dirname(packageJsonPath),
-      package: await readPackageJson(packageJsonPath),
-    });
-  }
-
-  return results;
 }
